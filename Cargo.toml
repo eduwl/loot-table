@@ -3,5 +3,27 @@ name = "loot-table"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+path = "src/main.rs"
+name = "loot-table"
+
+[profile.dev]
+codegen-units = 16
+debug = true
+incremental = false
+lto = false
+opt-level = 0
+panic = "unwind"
+strip = false
+
+[profile.release]
+codegen-units = 1
+debug = 0
+incremental = false
+lto = "fat"
+opt-level = 3
+panic = "abort"
+strip = true
+
 [dependencies]
 rand = "0.9.0"

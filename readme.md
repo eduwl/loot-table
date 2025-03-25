@@ -3,12 +3,18 @@
 Com o executavel na pasta que desejar abra o terminal no diretório e utiliza da seguinte forma:
 
 - Exemplo
+
 ```bash
 ./loot-table <nome_boss> <iteralções>
 ```
 
 ```bash
 ./loot-table kaari 1000
+```
+
+```bash
+ ## Windows
+.\loot-table.exe kaari 1000
 ```
 
 > Utilize com o `stalker`, `deva`, `kaari` ou `profane`.
@@ -24,16 +30,17 @@ A ideia por trás de uma **loot table** é criar uma seleção aleatória e cont
 Vamos detalhar o funcionamento do seu código usando um exemplo de **loot table** para o "Kaari":
 
 #### Exemplo de loot table para o "Kaari":
-| Item                                               | Chance (%) |
-|----------------------------------------------------|-----------|
-| Small Kaari Soul Shield Chest                      | 25%       |
-| Medium Kaari Soul Shield Chest                     | 20%       |
-| Valor Stone Chest                                   | 22.8%     |
-| Kaari Mask                                         | 4%        |
-| Kaari Googles                                      | 4%        |
-| Kaari Suit                                         | 4%        |
-| Moonwater Plains King Kaari                        | 0.2%      |
-| Kaari Jiangshi Weapon Chest                        | 20%       |
+
+| Item                           | Chance (%) |
+| ------------------------------ | ---------- |
+| Small Kaari Soul Shield Chest  | 25%        |
+| Medium Kaari Soul Shield Chest | 20%        |
+| Valor Stone Chest              | 22.8%      |
+| Kaari Mask                     | 4%         |
+| Kaari Googles                  | 4%         |
+| Kaari Suit                     | 4%         |
+| Moonwater Plains King Kaari    | 0.2%       |
+| Kaari Jiangshi Weapon Chest    | 20%        |
 
 Neste exemplo, a soma das probabilidades é 100%. Quando o jogo for executado, o sistema vai fazer uma "rolagem" para determinar qual item será obtido. Vamos explicar como isso funciona no código:
 
@@ -52,6 +59,7 @@ Neste exemplo, a soma das probabilidades é 100%. Quando o jogo for executado, o
    O número gerado é então comparado com as probabilidades acumuladas na **loot table**. A soma das probabilidades é acumulada conforme você percorre os itens na tabela.
 
    Por exemplo:
+
    - O primeiro item tem 25% de chance.
    - O segundo item tem 20% de chance, então a soma acumulada para o segundo item é 45%.
    - O terceiro item tem 22.8%, então a soma acumulada vai até 67.8%.
@@ -68,22 +76,22 @@ Neste exemplo, a soma das probabilidades é 100%. Quando o jogo for executado, o
 
 Vamos detalhar as **probabilidades acumuladas** de forma mais clara para o exemplo da tabela acima:
 
-| Item                                               | Chance (%) | Acumulação (%) |
-|----------------------------------------------------|-----------|----------------|
-| Small Kaari Soul Shield Chest                      | 25%       | 25%            |
-| Medium Kaari Soul Shield Chest                     | 20%       | 45%            |
-| Valor Stone Chest                                   | 22.8%     | 67.8%          |
-| Kaari Mask                                         | 4%        | 69.8%          |
-| Kaari Googles                                      | 4%        | 73.8%          |
-| Kaari Suit                                         | 4%        | 77.8%          |
-| Moonwater Plains King Kaari                        | 0.2%      | 78%            |
-| Kaari Jiangshi Weapon Chest                        | 20%       | 98%            |
+| Item                           | Chance (%) | Acumulação (%) |
+| ------------------------------ | ---------- | -------------- |
+| Small Kaari Soul Shield Chest  | 25%        | 25%            |
+| Medium Kaari Soul Shield Chest | 20%        | 45%            |
+| Valor Stone Chest              | 22.8%      | 67.8%          |
+| Kaari Mask                     | 4%         | 69.8%          |
+| Kaari Googles                  | 4%         | 73.8%          |
+| Kaari Suit                     | 4%         | 77.8%          |
+| Moonwater Plains King Kaari    | 0.2%       | 78%            |
+| Kaari Jiangshi Weapon Chest    | 20%        | 98%            |
 
 ### Como o código usa essas informações:
 
 1. O código gera um número aleatório (digamos, `roll = 43`).
-   
 2. O código então compara esse número com as probabilidades acumuladas:
+
    - 43 está entre 25 e 45, então o item sorteado é o **Medium Kaari Soul Shield Chest**.
 
 3. A quantidade de vezes que um item é sorteado pode ser acumulada, como mostrado no código com a estrutura `HashMap`. Ele armazena o número de vezes que cada item foi escolhido ao longo de várias iterações.

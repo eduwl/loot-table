@@ -1,3 +1,20 @@
+## Como Usar
+
+Com o executavel na pasta que desejar abra o terminal no diretório e utiliza da seguinte forma:
+
+- Exemplo
+```bash
+./loot-table <nome_boss> <iteralções>
+```
+
+```bash
+./loot-table kaari 1000
+```
+
+> Utilize com o `stalker`, `deva`, `kaari` ou `profane`.
+
+## Loot Table
+
 Uma **loot table** é uma tabela de probabilidades usada para determinar quais itens são dados ao jogador após realizar uma ação no jogo, como derrotar um inimigo. A tabela contém itens, cada um com uma **probabilidade** de ser escolhido, e a soma das probabilidades de todos os itens é, normalmente, **100%** (ou algo muito próximo disso).
 
 A ideia por trás de uma **loot table** é criar uma seleção aleatória e controlada dos itens que o jogador pode obter, garantindo que itens raros tenham uma chance menor de aparecer e itens comuns tenham uma chance maior.
